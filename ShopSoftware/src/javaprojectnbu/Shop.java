@@ -85,20 +85,20 @@ public class Shop {
     }
     
     public void Pay(List<Receipt> receipts){
-        List<Receipt> res = new ArrayList<Receipt>();
-        List<Receipt> res2 = new ArrayList<Receipt>();
+        List<Receipt> rec = new ArrayList<Receipt>();
+        List<Receipt> rec2 = new ArrayList<Receipt>();
 
         for (int i = 0; i < receipts.size()/2; i++) {
-            res.add(receipts.get(i));
+            rec.add(receipts.get(i));
         }
         
         for (int i = receipts.size()/2; i < receipts.size(); i++) {
-            res2.add(receipts.get(i));
+            rec2.add(receipts.get(i));
         }
         
-        Thread t1 = new Thread(new PayDesk(receipts));
+        Thread t1 = new Thread(new PayDesk(rec));
         t1.start();
-        Thread t2 = new Thread(new PayDesk(receipts));
+        Thread t2 = new Thread(new PayDesk(rec2));
         t2.start();
     }
   
